@@ -1,11 +1,15 @@
+/* Container for the location component, full viewport size */
 .location-container {
   position: relative;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+  /* Ensure compatibility with different browsers */
+  box-sizing: border-box;
 }
 
+/* Background image styling */
 .background-image {
   position: absolute;
   top: 0;
@@ -15,8 +19,11 @@
   object-fit: cover;
   z-index: -1;
   filter: brightness(0.6);
+  /* Improve performance for large images */
+  will-change: filter;
 }
 
+/* Location box styling */
 .location-box {
   position: absolute;
   bottom: 30%;
@@ -27,36 +34,83 @@
   border-radius: 12px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /* Ensure content doesn't overflow */
+  max-width: 600px;
+  margin: 0 auto;
+  /* Smooth transitions for dynamic resizing */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .location-box {
+    bottom: 20%;
+    left: 5%;
+    right: 5%;
+    padding: 20px;
+  }
+}
+
+/* Heading inside location box */
 .location-box h2 {
   margin-bottom: 10px;
-  font-size: 24px;
+  font-size: 1.5rem; /* Relative unit for scalability */
+  font-weight: 600;
+  color: #222;
 }
 
+/* Paragraph text inside location box */
 .location-box p {
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 1rem; /* Relative unit for scalability */
   color: #333;
+  line-height: 1.5; /* Improved readability */
 }
 
+/* Locate button styling */
 .locate-button {
   background-color: #4CAF50;
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 12px 24px;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
+  /* Smooth hover transition */
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
+/* Button hover effect */
 .locate-button:hover {
   background-color: #45a049;
+  transform: translateY(-2px); /* Subtle lift effect */
 }
 
+/* Button focus state for accessibility */
+.locate-button:focus {
+  outline: 2px solid #4CAF50;
+  outline-offset: 2px;
+}
+
+/* Manual select link styling */
 .manual-select {
   margin-top: 15px;
   color: #007BFF;
   text-decoration: underline;
   cursor: pointer;
+  font-size: 0.9rem;
+  /* Smooth hover transition */
+  transition: color 0.2s ease;
+}
+
+/* Manual select hover effect */
+.manual-select:hover {
+  color: #0056b3;
+}
+
+/* Manual select focus state for accessibility */
+.manual-select:focus {
+  outline: 2px solid #007BFF;
+  outline-offset: 2px;
 }
