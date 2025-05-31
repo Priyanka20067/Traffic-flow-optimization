@@ -24,7 +24,7 @@ const LocationScreen = () => {
 
   return (
     <div className="location-container">
-      <img src="/images/lgbg.png" alt="Background" className="background-image" />
+      
 
       <div className="location-box">
         <h2>Where are you?</h2>
